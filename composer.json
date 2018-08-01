@@ -1,0 +1,12 @@
+{
+    "name": "vemce/captcha",
+    "description": "captcha",
+    "type": "library",
+    "authors": [
+        {
+            "name": "vemce",
+            "email": "vemce@foxmail.com"
+        }
+    ],
+    "require": {}
+}
