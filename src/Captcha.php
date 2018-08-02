@@ -1,6 +1,13 @@
 <?php
-namespace vemce;
-class Captcha
+
+/**
+ * Created by PhpStorm.
+ * User: mc
+ * Date: 2018/8/1
+ * Time: 14:23
+ */
+namespace vemce\captcha;
+class captcha
 {
     public $im;
     public $length;
@@ -10,7 +17,16 @@ class Captcha
     public $captcha = '';
     public $string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-    public function make($length = 4, $fontSize = 25, $pixel = 5, $line = 3, $file = null){
+    /**
+     * 生成验证码图片
+     * @param int $length
+     * @param int $fontSize
+     * @param int $pixel
+     * @param int $line
+     * @param null $file
+     */
+    public function make($length = 4, $fontSize = 25, $pixel = 5, $line = 3, $file = null)
+    {
         $this->length = $length;
         $this->fontSize = $fontSize;
         $this->width = ceil($fontSize * $length * 1.5);
@@ -24,17 +40,21 @@ class Captcha
         $this->writeWords();
         $this->drawPixel($pixel);
         $this->drawLine($line);
-        if($file){
+        if ($file) {
             imagepng($this->im, $file);
-        }else{
+        } else {
             header('content-type:image/png');
             imagepng($this->im, $file);
         }
         imagedestroy($this->im);
     }
 
+    /**
+     * 打印文字
+     */
     public function writeWords()
     {
+        $fontFile = __DIR__ . '/ttfs/' . mt_rand(1, 6) . '.ttf';
         for ($i = 0; $i < $this->length; $i++) {
             // 字体颜色
             $fontColor = imagecolorallocate($this->im, mt_rand(0, 150), mt_rand(0, 150), mt_rand(0, 150));
@@ -46,12 +66,16 @@ class Captcha
             $y = $this->fontSize + mt_rand(5, $this->fontSize - 5);
             $fontSize = $this->fontSize + mt_rand(-2, 2);
             // 填充内容到画布中
-            $fontFile = __DIR__ . '/1.ttf';
             imagettftext($this->im, $fontSize, mt_rand(-30, 30), $x, $y, $fontColor, $fontFile, $fontContent);
         }
     }
 
-    public function drawPixel($pixel = 5){
+    /**
+     * 画点
+     * @param int $pixel
+     */
+    public function drawPixel($pixel = 5)
+    {
         $number = $this->width * $pixel;
         for ($i = 0; $i < $number; $i++) {
             $color = imagecolorallocate($this->im, mt_rand(50, 200), mt_rand(50, 200), mt_rand(50, 200));
@@ -59,22 +83,17 @@ class Captcha
         }
     }
 
-    public function drawLine($line = 3){
-        $middle = ceil($this->width/2);
-        $middleH = ceil($this->height/2);
+    /**
+     * 画干扰线
+     * @param int $line
+     */
+    public function drawLine($line = 3)
+    {
+        $middle = ceil($this->width / 2);
+        $middleH = ceil($this->height / 2);
         for ($i = 0; $i < $line; $i++) {
             $color = imagecolorallocate($this->im, mt_rand(50, 200), mt_rand(50, 200), mt_rand(50, 200));
-
             imageline($this->im, mt_rand(1, $middle), mt_rand(1, $middleH), mt_rand($middle, $this->width), mt_rand($middleH, $this->height), $color);
         }
     }
 }
-
-$img = new Captcha();
-$img->make();
-header('content-type:image/png');
-/*for($i = 0; $i<10; $i++){
-    $img->make(4, 25, 5,3,"img/" . microtime(true) . ".png");
-    echo $img->captcha . PHP_EOL;
-    echo strlen($img->captcha) . PHP_EOL;
-}*/
