@@ -9,7 +9,7 @@
             "name": "vemce",
             "email": "vemce@foxmail.com",
             "homepage": "https://www.vemce.com/"
-        },
+        }
     ],
     "autoload": {
         "psr-4": {
