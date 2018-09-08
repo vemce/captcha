@@ -13,5 +13,8 @@
         "psr-4": {
             "vemce\\captcha\\": "./src"
         }
+    },
+    "require": {
+        "ext-gd": "*"
     }
 }

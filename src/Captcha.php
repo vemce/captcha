@@ -2,7 +2,7 @@
 
 /**
  * Created by PhpStorm.
- * User: mc
+ * User: vemce
  * Date: 2018/8/1
  * Time: 14:23
  */
@@ -44,7 +44,7 @@ class Captcha
             imagepng($this->im, $file);
         } else {
             header('content-type:image/png');
-            imagepng($this->im, $file);
+            imagepng($this->im);
         }
         imagedestroy($this->im);
     }
