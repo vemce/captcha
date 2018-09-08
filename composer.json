@@ -1,7 +1,7 @@
 {
     "name": "vemce/captcha",
     "type": "library",
-    "description": "captcha",
+    "description": "a captcha library for php",
     "license": "MIT",
     "authors": [
         {
