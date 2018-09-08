@@ -1,19 +1,17 @@
 {
     "name": "vemce/captcha",
-    "description": "",
-    "keywords": ["captcha"],
-    "homepage": "https://www.vemce.com",
+    "type": "library",
+    "description": "captcha",
     "license": "MIT",
     "authors": [
         {
             "name": "vemce",
-            "email": "vemce@foxmail.com",
-            "homepage": "https://www.vemce.com/"
+            "email": "vemce@foxmail.com"
         }
     ],
     "autoload": {
         "psr-4": {
-            "vemce\\captcha\\": "src/"
+            "vemce\\captcha\\": "./src"
         }
     }
 }

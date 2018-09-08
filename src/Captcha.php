@@ -7,7 +7,7 @@
  * Time: 14:23
  */
 namespace vemce\captcha;
-class captcha
+class Captcha
 {
     public $im;
     public $length;
