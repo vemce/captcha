@@ -15,6 +15,7 @@ class Captcha
     public $width;
     public $height;
     public $captcha = '';
+    public $content = '';
     public $string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
     /**
@@ -43,8 +44,10 @@ class Captcha
         if ($file) {
             imagepng($this->im, $file);
         } else {
-            header('content-type:image/png');
+            ob_start();
+            // 输出图像
             imagepng($this->im);
+            $this->content = ob_get_clean();
         }
         imagedestroy($this->im);
     }
