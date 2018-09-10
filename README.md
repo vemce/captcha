@@ -10,8 +10,6 @@ $ composer require vemce/captcha
 ## Usage
 
 ```php
-<?php
-
 use vemce\captcha\Captcha;
 
 $captcha = new Captcha();
