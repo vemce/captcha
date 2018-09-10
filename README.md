@@ -12,7 +12,9 @@ $ composer require vemce/captcha
 ## 用法
 
 ```php
+<?php
 use vemce\captcha\Captcha;
+require 'vendor/autoload.php';
 
 $captcha = new Captcha();
 $captcha->make();
