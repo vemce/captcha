@@ -1,13 +1,15 @@
-## Requirement
+# php验证码
+
+## 依赖
 1. gd2 拓展
 
-## Installation
+## 安装
 
 ```shell
 $ composer require vemce/captcha
 ```
 
-## Usage
+## 用法
 
 ```php
 use vemce\captcha\Captcha;
