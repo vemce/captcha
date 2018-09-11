@@ -6,6 +6,7 @@
  * Date: 2018/8/1
  * Time: 14:23
  */
+
 namespace vemce\captcha;
 class Captcha
 {
